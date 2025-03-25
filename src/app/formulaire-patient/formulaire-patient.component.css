@@ -1,0 +1,122 @@
+:root {
+    --primary-color: #3498db !important;  /* Bleu ciel lumineux */
+    --secondary-color: #e67e22  !important;    /* Orange chaud */
+    --background-color: #f1f4f8 !important;   /* Gris très clair bleuté */
+    --text-color: #2c3e50 !important;         /* Bleu marine profond */
+    --accent-color: #2ecc71 !important;       /* Vert émeraude */
+  }
+
+  * {
+    background-color: var(--primary-color) !important;
+  }
+  
+  .form-container {
+    max-width: 600px;
+    margin: 2rem auto;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    overflow: hidden;
+  }
+  
+  .form-navigation {
+    display: flex;
+    background-color: var(--background-color);
+    border-bottom: 2px solid var(--primary-color);
+  }
+  
+  .nav-button {
+    flex: 1;
+    padding: 1rem;
+    border: none;
+    background-color: transparent;
+    color: var(--text-color);
+    font-weight: bold;
+    transition: all 0.3s ease;
+  }
+  
+  .nav-button.active {
+    background-color: var(--primary-color);
+    color: white;
+  }
+  
+  .medical-form {
+    padding: 2rem;
+  }
+  
+  .form-step {
+    animation: fadeIn 0.5s ease;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+  }
+  
+  .form-input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 2px solid var(--primary-color);
+    border-radius: 8px;
+    background-color: white;
+    transition: all 0.3s ease;
+  }
+  
+  .form-input:focus {
+    outline: none;
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+  }
+  
+  .button-group {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1.5rem;
+  }
+  
+  .next-button, 
+  .prev-button, 
+  .submit-button {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .next-button {
+    background-color: var(--primary-color);
+    color: white;
+  }
+  
+  .prev-button {
+    background-color: var(--background-color);
+    color: var(--text-color);
+  }
+  
+  .submit-button {
+    background-color: var(--secondary-color);
+    color: white;
+  }
+  
+  .next-button:hover {
+    background-color: #2980b9;
+  }
+  
+  .prev-button:hover {
+    background-color: #d3d3d3;
+  }
+  
+  .submit-button:hover {
+    background-color: #d35400;
+  }

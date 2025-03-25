@@ -1,0 +1,169 @@
+<div class="form-container">
+    <div class="form-navigation">
+      <button 
+        (click)="nextStep('personal')" 
+        class="nav-button"
+        [class.active]="currentStep === 'personal'"
+      >
+        Informations Personnelles
+      </button>
+      <button 
+        (click)="nextStep('contact')" 
+        class="nav-button"
+        [class.active]="currentStep === 'contact'"
+      >
+        Coordonnées
+      </button>
+      <button 
+        (click)="nextStep('previous-doctor')" 
+        class="nav-button"
+        [class.active]="currentStep === 'previous-doctor'"
+      >
+        Médecin Précédent
+      </button>
+    </div>
+  
+    <form (ngSubmit)="onSubmit()" class="medical-form" [formGroup]="personalForm">
+      <!-- Informations Personnelles -->
+      <div *ngIf="currentStep === 'personal'" class="form-step">
+        <h2>Informations Personnelles</h2>
+        <div class="form-group">
+          <label for="nom">Nom</label>
+          <input 
+            type="text" 
+            id="nom" 
+            formControlName="nom" 
+            class="form-input"
+            placeholder="Votre nom"
+          >
+        </div>
+        <div class="form-group">
+          <label for="prenom">Prénom</label>
+          <input 
+            type="text" 
+            id="prenom" 
+            formControlName="prenom" 
+            class="form-input"
+            placeholder="Votre prénom"
+          >
+        </div>
+        <div class="form-group">
+          <label for="dateNaissance">Date de Naissance</label>
+          <input 
+            type="date" 
+            id="dateNaissance" 
+            formControlName="dateNaissance" 
+            class="form-input"
+          >
+        </div>
+        <button 
+          type="button" 
+          (click)="nextStep('contact')" 
+          class="next-button"
+        >
+          Suivant
+        </button>
+      </div>
+  
+      <!-- Coordonnées -->
+      <div *ngIf="currentStep === 'contact'" class="form-step" [formGroup]="contactForm">
+        <h2>Coordonnées</h2>
+        <div class="form-group">
+          <label for="communeResidence">Commune de Résidence</label>
+          <input 
+            type="text" 
+            id="communeResidence" 
+            formControlName="communeResidence" 
+            class="form-input"
+            placeholder="Votre commune"
+          >
+        </div>
+        <div class="form-group">
+          <label for="telephone">Téléphone</label>
+          <input 
+            type="tel" 
+            id="telephone" 
+            formControlName="telephone" 
+            class="form-input"
+            placeholder="Votre numéro"
+          >
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input 
+            type="email" 
+            id="email" 
+            formControlName="email" 
+            class="form-input"
+            placeholder="Votre email"
+          >
+        </div>
+        <div class="button-group">
+          <button 
+            type="button" 
+            (click)="nextStep('personal')" 
+            class="prev-button"
+          >
+            Précédent
+          </button>
+          <button 
+            type="button" 
+            (click)="nextStep('previous-doctor')" 
+            class="next-button"
+          >
+            Suivant
+          </button>
+        </div>
+      </div>
+  
+      <!-- Médecin Précédent -->
+      <div *ngIf="currentStep === 'previous-doctor'" class="form-step" [formGroup]="previousDoctorForm">
+        <h2>Médecin Précédent</h2>
+        <div class="form-group">
+          <label for="nomMedecin">Nom du Médecin</label>
+          <input 
+            type="text" 
+            id="nomMedecin" 
+            formControlName="nomMedecin" 
+            class="form-input"
+            placeholder="Nom du médecin précédent"
+          >
+        </div>
+        <div class="form-group">
+          <label for="prenomMedecin">Prénom du Médecin</label>
+          <input 
+            type="text" 
+            id="prenomMedecin" 
+            formControlName="prenomMedecin" 
+            class="form-input"
+            placeholder="Prénom du médecin"
+          >
+        </div>
+        <div class="form-group">
+          <label for="lieuExercice">Lieu d'Exercice</label>
+          <input 
+            type="text" 
+            id="lieuExercice" 
+            formControlName="lieuExercice" 
+            class="form-input"
+            placeholder="Lieu d'exercice du médecin"
+          >
+        </div>
+        <div class="button-group">
+          <button 
+            type="button" 
+            (click)="nextStep('contact')" 
+            class="prev-button"
+          >
+            Précédent
+          </button>
+          <button 
+            type="submit" 
+            class="submit-button"
+          >
+            Soumettre
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
