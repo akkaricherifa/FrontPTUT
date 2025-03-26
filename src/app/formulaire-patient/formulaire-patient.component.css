@@ -5,8 +5,24 @@
     --text-color: #2c3e50 !important;         /* Bleu marine profond */
     --accent-color: #2ecc71 !important;       /* Vert émeraude */
   }
+  .element {
+    color: var(--text-color); /* Assurez-vous que votre sélecteur a une spécificité suffisante */
+    background-color: var(--background-color);
+}
 
-  * {
+/* 2. Placement correct des variables */
+body {
+    color: var(--text-color);
+    background-color: var(--background-color);
+}
+
+/* 3. Utilisation correcte des variables */
+.btn-primary {
+    background-color: var(--primary-color);
+    color: white; /* Couleur de texte complémentaire */
+}
+
+  body {
     background-color: var(--primary-color) !important;
   }
   
@@ -37,7 +53,7 @@
   
   .nav-button.active {
     background-color: var(--primary-color);
-    color: white;
+    color: rgb(125, 184, 16);
   }
   
   .medical-form {
@@ -96,7 +112,7 @@
   
   .next-button {
     background-color: var(--primary-color);
-    color: white;
+    color: rgb(158, 12, 12);
   }
   
   .prev-button {
@@ -106,7 +122,7 @@
   
   .submit-button {
     background-color: var(--secondary-color);
-    color: white;
+    color: rgb(192, 13, 13);
   }
   
   .next-button:hover {
@@ -114,7 +130,7 @@
   }
   
   .prev-button:hover {
-    background-color: #d3d3d3;
+    background-color: #ca2424;
   }
   
   .submit-button:hover {
