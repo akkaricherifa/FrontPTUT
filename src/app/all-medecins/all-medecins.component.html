@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CPTS Sud Tarn - Médecins</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #1a73e8;
+            --secondary-blue: #4285f4;
+            --light-blue: #e8f0fe;
+            --dark-gray: #5f6368;
+            --medium-gray: #dadce0;
+            --white: #ffffff;
+            --green-accent: #34a853;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: var(--dark-gray);
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            color: white;
+            padding: 1.5rem 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .logo {
+            width: 50px;
+            height: 50px;
+            margin-right: 15px;
+        }
+
+        .app-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        .app-subtitle {
+            font-size: 1rem;
+            opacity: 0.9;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 20px;
+        }
+
+        .card {
+            background: var(--white);
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .card-header {
+            background-color: var(--light-blue);
+            padding: 15px 20px;
+            border-bottom: 1px solid var(--medium-gray);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .card-title {
+            color: var(--primary-blue);
+            margin: 0;
+            font-size: 1.2rem;
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        .doctor-info {
+            display: flex;
+            margin-bottom: 15px;
+        }
+
+        .doctor-icon {
+            width: 40px;
+            height: 40px;
+            background-color: var(--light-blue);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: var(--primary-blue);
+            font-size: 1.2rem;
+        }
+
+        .doctor-details {
+            flex: 1;
+        }
+
+        .doctor-name {
+            font-weight: 600;
+            margin: 0 0 5px 0;
+            color: var(--dark-gray);
+        }
+
+        .doctor-specialty {
+            color: var(--primary-blue);
+            font-size: 0.9rem;
+            margin: 0 0 5px 0;
+        }
+
+        .doctor-location {
+            color: var(--dark-gray);
+            font-size: 0.9rem;
+            margin: 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .location-icon {
+            margin-right: 5px;
+        }
+
+        .search-bar {
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 12px 20px 12px 45px;
+            border: 1px solid var(--medium-gray);
+            border-radius: 8px;
+            font-size: 1rem;
+            background-image: url('data:image/svg+xml;utf8,<svg fill="%235f6368" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18"><path d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 0 0 1.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 0 0-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 0 0 5.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>');
+            background-repeat: no-repeat;
+            background-position: 15px center;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 2px rgba(26,115,232,0.2);
+        }
+
+        .filter-section {
+            display: flex;
+            margin-bottom: 20px;
+            gap: 10px;
+        }
+
+        .filter-button {
+            padding: 8px 15px;
+            background-color: var(--white);
+            border: 1px solid var(--medium-gray);
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            color: var(--dark-gray);
+        }
+
+        .filter-button.active {
+            background-color: var(--primary-blue);
+            color: white;
+            border-color: var(--primary-blue);
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            color: var(--dark-gray);
+            font-size: 0.9rem;
+            border-top: 1px solid var(--medium-gray);
+            margin-top: 40px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 15px;
+            }
+            
+            .app-title {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo-container">
+            <div class="logo">🏥</div>
+            <div>
+                <h1 class="app-title">CPTS Sud Tarn</h1>
+                <p class="app-subtitle">Annuaire des médecins du territoire</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="search-bar">
+            <input type="text" class="search-input" placeholder="Rechercher un médecin, une spécialité ou une commune...">
+        </div>
+
+        <div class="filter-section">
+            <button class="filter-button active">Tous</button>
+            <button class="filter-button">Généralistes</button>
+            <button class="filter-button">Spécialistes</button>
+            <button class="filter-button">Par commune</button>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h2 class="card-title">Médecins Généralistes</h2>
+            </div>
+            <div class="card-body">
+                <div class="doctor-info">
+                    <div class="doctor-icon">👨‍⚕️</div>
+                    <div class="doctor-details">
+                        <h3 class="doctor-name">Dr. Jean Dupont</h3>
+                        <p class="doctor-specialty">Médecine générale</p>
+                        <p class="doctor-location">
+                            <span class="location-icon">📍</span>
+                            <span>12 Rue de la République, 81200 Mazamet</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="doctor-info">
+                    <div class="doctor-icon">👩‍⚕️</div>
+                    <div class="doctor-details">
+                        <h3 class="doctor-name">Dr. Marie Lambert</h3>
+                        <p class="doctor-specialty">Médecine générale</p>
+                        <p class="doctor-location">
+                            <span class="location-icon">📍</span>
+                            <span>5 Avenue des Tilleuls, 81500 Lavaur</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h2 class="card-title">Spécialistes</h2>
+            </div>
+            <div class="card-body">
+                <div class="doctor-info">
+                    <div class="doctor-icon">👨‍⚕️</div>
+                    <div class="doctor-details">
+                        <h3 class="doctor-name">Dr. Pierre Martin</h3>
+                        <p class="doctor-specialty">Cardiologie</p>
+                        <p class="doctor-location">
+                            <span class="location-icon">📍</span>
+                            <span>Centre Médical, 8 Rue de Verdun, 81100 Castres</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="doctor-info">
+                    <div class="doctor-icon">👩‍⚕️</div>
+                    <div class="doctor-details">
+                        <h3 class="doctor-name">Dr. Sophie Roux</h3>
+                        <p class="doctor-specialty">Pédiatrie</p>
+                        <p class="doctor-location">
+                            <span class="location-icon">📍</span>
+                            <span>15 Boulevard Gambetta, 81200 Mazamet</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>© 2025 CPTS Sud Tarn - Tous droits réservés</p>
+    </div>
+</body>
+</html>
